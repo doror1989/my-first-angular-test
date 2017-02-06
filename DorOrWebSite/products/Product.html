@@ -1,0 +1,72 @@
+﻿<div ng-controller="productController as product" class="container-fluid">
+
+     <div class="row">
+          Find Product:
+          <input type="text" name="productId" ng-model="product.prodId" />
+          <button type="button" class="btn-primary" ng-click="product.find(product.prodId)">Find Product</button>
+     </div>
+
+     <br /> <br />
+
+     <form class="" name="myForm" ng-submit="product.add()">
+          <div class="row">
+               Add Product:
+          </div>
+
+          <div class="row">
+               <label for="ProductName">Name:</label>
+               <input type="text" name="ProductName" ng-model="product.productToAdd.ProductName" required />
+          </div>
+
+          <div class="error" ng-if="myForm.ProductName.$error.required && myForm.ProductName.$touched">
+               Required!
+          </div>
+
+          <div class="row">
+               <label for="ProductId">ID:</label>
+               <input type="text" ng-model="product.productToAdd.prodId" name="ProductId" required />
+          </div>
+
+          <div class="error" ng-if="myForm.ProductId.$error.required && myForm.ProductId.$touched">
+               Required!
+          </div>
+
+          <div class="row">
+               <label for="Description" class="">Description:</label>
+               <input type="text" ng-model="product.productToAdd.Description" name="Description" required />
+          </div>
+
+          <div class="error" ng-if="myForm.Description.$error.required && myForm.Description.$touched">
+               Required!
+          </div>
+
+          <div class="row">
+               <label for="Price" class="">Price:</label>
+               <input type="text" ng-model="product.productToAdd.Price" name="Price" required />
+          </div>
+
+          <div class="error" ng-if="myForm.Price.$error.required && myForm.Price.$touched">
+               Required!
+          </div>
+
+          <button type="submit" class="btn-primary">Add Product</button>
+     </form>
+
+     <br /> <br />
+
+     <div ng-if="product.showMsg">
+          <span ng-bind="product.msg"></span>
+     </div>
+
+     <br /> <br />
+
+     <button type="button" class="btn-primary" ng-click="product.get()">Show All Product</button>
+
+     <div ng-repeat="prod in product.products" ng-if="product.showResult">
+          {{prod.ProductName}}
+          {{prod.Description}}
+          {{prod.Price}}
+          {{Prod.ProductId}}
+     </div>
+
+</div>
